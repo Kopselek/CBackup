@@ -50,18 +50,18 @@ today = datetime.date.today()
 d1 = today.strftime("%d-%m-%Y")
 
 # path of script
-sPath = os.path.dirname(sys.argv[0])
+sPath = os.path.dirname(os.path.realpath(__file__))
 
 # Destination path
-dst = sPath + "\\backup\\" + d1 + "\\"
+dst = sPath + "/backup/" + d1 + "/"
 
 # create directory with present day
-Path("backup\\" + d1).mkdir(parents=True, exist_ok=True)
+Path("backup/" + d1).mkdir(parents=True, exist_ok=True)
 
 # date seven days before - dd-mm-yy
 # and makes path for old backup
 d2 = sevenDaysBack()
-dirpath = Path(sPath + "\\backup\\",d2)
+dirpath = Path(sPath + "/backup/",d2)
 
 if(src != ""):
     copytree(src, dst)
