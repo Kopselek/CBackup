@@ -10,13 +10,16 @@
 from pathlib import Path
 import os, shutil, sys, datetime
 
+# path of script
+sPath = os.path.dirname(os.path.realpath(__file__))
+
 # get date seven days back
 def sevenDaysBack():
     Previous_Date = datetime.datetime.today() - datetime.timedelta(days=7)
     dataBack = Previous_Date.strftime("%d-%m-%Y")
     return dataBack
 
-Path("backup").mkdir(parents=True, exist_ok=True)
+Path(sPath + "/backup").mkdir(parents=True, exist_ok=True)
 
 # empty src path
 src = ""
@@ -24,13 +27,13 @@ src = ""
 
 #create config or open if exist
 try:
-    fo = open("config.txt","r")
+    fo = open(sPath + "/config.txt","r")
     pass
     src = fo.read()
     src = src.replace("src: ","")
     fo.close()
 except IOError:
-   fo = open("config.txt","w+")
+   fo = open(sPath + "/config.txt","w+")
    fo.write("src: ")
    fo.close()
    exit()
@@ -49,14 +52,11 @@ today = datetime.date.today()
 # today date - dd-mm-yy
 d1 = today.strftime("%d-%m-%Y")
 
-# path of script
-sPath = os.path.dirname(os.path.realpath(__file__))
-
 # Destination path
 dst = sPath + "/backup/" + d1 + "/"
 
 # create directory with present day
-Path("backup/" + d1).mkdir(parents=True, exist_ok=True)
+Path(sPath + "/backup/" + d1).mkdir(parents=True, exist_ok=True)
 
 # date seven days before - dd-mm-yy
 # and makes path for old backup
