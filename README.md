@@ -1,8 +1,11 @@
-# CBackup firstly makes backup directory and config file so
-# you need to run it once then in config you have to
-# put path of directory
+# CBackup
 
-# Script automatically remove old backup seven days before
+CBackup is a tool to automatical copy your files on Linux OS
 
-# if you want this script to makes backup everyday at 00:00
-# I recommend you a CRON
+## Installation
+
+Run script once and fill config file with your appointed direcotry path
+
+## Usage
+
+Config CRON to run script once a day
